@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.aurorevermersch.topquiz.R;
+import com.example.aurorevermersch.topquiz.model.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,11 +19,14 @@ public class MainActivity extends AppCompatActivity {
     private TextView mGreetingText;
     private EditText mNameInput;
     private Button mPlayButton;
+    private User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mUser = new User();
 
         //Référencement des éléments graphiques dans la méthode onCreate
         mGreetingText = (TextView) findViewById(R.id.activity_main_greeting_txt);
@@ -64,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 //Lancement d'une nouvelle activité
                 Intent gameActivity = new Intent(MainActivity.this, GameActivity.class);
                 startActivity(gameActivity);
+
+                mUser.setFirstName(mNameInput.getText().toString());
 
             }
 
